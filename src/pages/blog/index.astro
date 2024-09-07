@@ -1,0 +1,68 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Button from "../../components/Button.astro";
+
+// Obtenção dos query params
+const url = new URL(Astro.request.url);
+const pag = url.searchParams.get('pag') || 1;
+console.log("pag",pag);
+const search = Astro.url.searchParams.get('pag') || '';
+console.log("search",search);
+---
+
+<Layout title="Blog">
+	<Header />
+    <main class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition duration-500">
+        <div class="container mx-auto py-8 px-4 md:px-8">
+          <h1 class="text-3xl font-bold mb-6">Blog Title</h1>
+          
+          <article class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Post Title 1</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet ultricies mauris, at aliquet lacus viverra sed. 
+            </p>
+            <a href="#" class="text-blue-500 dark:text-blue-400 hover:underline">Read more</a>
+          </article>
+          
+          <article class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Post Title 2</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">
+              Nulla facilisi. Fusce luctus, urna nec aliquet gravida, arcu eros elementum leo, ut auctor nunc lacus eget erat.
+            </p>
+            <a href="#" class="text-blue-500 dark:text-blue-400 hover:underline">Read more</a>
+          </article>
+          
+          <article class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Post Title 3</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">
+              Aenean fermentum justo nec libero ultricies, sit amet aliquet orci eleifend. Etiam posuere arcu nec nisl pharetra, sed aliquet arcu feugiat.
+            </p>
+            <a href="#" class="text-blue-500 dark:text-blue-400 hover:underline">Read more</a>
+          </article>
+      
+          <!-- Paginação -->
+          <div class="flex justify-end mt-8">
+            <nav class="space-x-2">
+              <button class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600">
+                Previous
+              </button>
+              <button class="bg-primary dark:bg-primary text-white px-4 py-2 rounded hover:bg-pink-500">
+                1
+              </button>
+              <button class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600">
+                2
+              </button>
+              <button class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600">
+                3
+              </button>
+              <button class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600">
+                Next
+              </button>
+            </nav>
+          </div>
+        </div>
+      </main>
+      
+      
+</Layout>

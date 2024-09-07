@@ -2,12 +2,12 @@
 import Button from './Button.astro'
 
 ---
-<header class="h-12 md:h-20 px-8 md:px-12 xl:px-28 flex gap-12 items-center">
+<header class="h-14 md:h-20 px-8 md:px-12 xl:px-28 flex gap-12 items-center">
     <a href="#" class="text-3xl font-bold">Astro</a>
 
     <button
             id="navMenuButton"
-            class="fixed top-0 right-0 p-4 z-20 lg:hidden bg-primary text-light font-bold rounded-l"
+            class="fixed top-0 right-0 p-4 z-20 lg:hidden bg-primary text-light font-bold rounded-l h-14"
     >
         Menu
     </button>
@@ -19,7 +19,7 @@ import Button from './Button.astro'
       "
     >
         <nav class="lg:flex-1 flex gap-8 flex-col lg:flex-row">
-            <a href="#">Home</a>
+            <a href="/blog">Blog</a>
             <a href="#">About</a>
             <a href="#">Contact</a>
         </nav>

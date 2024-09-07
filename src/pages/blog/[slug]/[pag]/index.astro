@@ -1,0 +1,118 @@
+---
+import type { GetStaticPaths, GetStaticPathsResult } from "astro";
+import Layout from "../../../../layouts/Layout.astro";
+import Header from "../../../../components/Header.astro";
+import Button from "../../../../components/Button.astro";
+import type { PaginationType } from "../../../../global_types/pagination";
+
+const params  = Astro.params
+
+console.log("astro params", params);
+export async function getStaticPaths() {
+    const data = [
+        {
+            title: "Post Title 1",
+            content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet ultricies mauris, at aliquet lacus viverra sed.",
+            slug: "post-title-1",
+            pagination: {
+                total: 3,
+                current: 1,
+                next: 2,
+                previous: null
+            }
+        },
+        {
+            title: "Post Title 2",
+            content: "Nulla facilisi. Fusce luctus, urna nec aliquet gravida, arcu eros elementum leo, ut auctor nunc lacus eget erat.",
+            slug: "post-title-2",
+            pagination: {
+                total: 3,
+                current: 2,
+                next: 3,
+                previous: 1
+            }
+        },
+        {
+            title: "Post Title 3",
+            content: "Aenean fermentum justo nec libero ultricies, sit amet aliquet orci eleifend. Etiam posuere arcu nec nisl pharetra, sed aliquet arcu feugiat.",
+            slug: "post-title-3",
+            pagination: {
+                total: 3,
+                current: 3,
+                next: null,
+                previous: 2
+            }
+        }
+    ];
+
+
+  // Gerar todos os caminhos possíveis com base nos cursos e aulas
+  const datas = data.map((pag) => {
+    return {
+      params: {
+        slug: pag.slug,
+        pag: pag.pagination.current.toString(),
+      },
+    };
+  }
+  );
+
+  return datas;
+}
+---
+
+<Layout title="Blog">
+	<Header />
+    <main class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition duration-500">
+        <div class="container mx-auto py-8 px-4 md:px-8">
+          <h1 class="text-3xl font-bold mb-6">Blog Title</h1>
+          
+          <article class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Post Title 1</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet ultricies mauris, at aliquet lacus viverra sed. 
+            </p>
+            <a href="#" class="text-blue-500 dark:text-blue-400 hover:underline">Read more</a>
+          </article>
+          
+          <article class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Post Title 2</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">
+              Nulla facilisi. Fusce luctus, urna nec aliquet gravida, arcu eros elementum leo, ut auctor nunc lacus eget erat.
+            </p>
+            <a href="#" class="text-blue-500 dark:text-blue-400 hover:underline">Read more</a>
+          </article>
+          
+          <article class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Post Title 3</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">
+              Aenean fermentum justo nec libero ultricies, sit amet aliquet orci eleifend. Etiam posuere arcu nec nisl pharetra, sed aliquet arcu feugiat.
+            </p>
+            <a href="#" class="text-blue-500 dark:text-blue-400 hover:underline">Read more</a>
+          </article>
+      
+          <!-- Paginação -->
+          <div class="flex justify-end mt-8">
+            <nav class="space-x-2">
+              <button class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600">
+                Previous
+              </button>
+              <button class="bg-primary dark:bg-primary text-white px-4 py-2 rounded hover:bg-pink-500">
+                1
+              </button>
+              <button class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600">
+                2
+              </button>
+              <button class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600">
+                3
+              </button>
+              <button class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600">
+                Next
+              </button>
+            </nav>
+          </div>
+        </div>
+      </main>
+      
+      
+</Layout>
