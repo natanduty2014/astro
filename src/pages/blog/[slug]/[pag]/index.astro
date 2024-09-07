@@ -6,6 +6,8 @@ import Button from "../../../../components/Button.astro";
 import type { DataType } from "../../../../global_types/data";
 
 const params = Astro.params;
+const slug = Astro.params.slug;
+
 export const data = [
   {
     pagination: {
@@ -105,7 +107,7 @@ export async function getStaticPaths() {
               <nav class="space-x-2">
                 {pagination.previous != null ? (
                   <a
-                    href={`/blog/${pagination.previous}`}
+                    href={`/blog/${slug}/${pagination.previous}`}
                     class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
                   >
                     Previous
@@ -115,7 +117,7 @@ export async function getStaticPaths() {
                 )}
                 {Array.from({ length: pagination.total }, (_, i) => (
                   <a
-                    href={i + 1 === pagination.current ? "#" : `/blog/${i + 1}`}
+                    href={i + 1 === pagination.current ? "#" : `/blog/${slug}/${i + 1}`}
                     class={` ${
                       i + 1 === pagination.current
                         ? "bg-primary dark:bg-primary text-white px-4 py-2 rounded hover:bg-pink-50"
@@ -129,7 +131,7 @@ export async function getStaticPaths() {
                 {pagination.next != null &&
                 pagination.next > pagination.current ? (
                   <a
-                    href={`/blog/${pagination.next}`}
+                    href={`/blog/${slug}/${pagination.next}`}
                     class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
                   >
                     Next
